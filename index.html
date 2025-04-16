@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+    <title>OCR Web App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      #result {
+        margin-top: 20px;
+        white-space: pre-wrap;
+        background: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      #canvasContainer {
+        display: none;
+      }
+      #capturedImage {
+        display: none;
+        max-width: 100%;
+      }
+      #captureOptions {
+        display: none;
+      }
+      #invoicePreview {
+        margin-top: 20px;
+        background: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      video {
+        max-width: 100%;
+        transform: scaleX(-1); /* Corregir imagen invertida */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OCR Web App</h1>
+    <form id="uploadForm">
+      <input type="file" id="imageInput" accept="image/*" required />
+      <button type="submit">Analizar Imagen</button>
+    </form>
+    <button id="toggleCamera">Activar Cámara</button>
+    <div id="canvasContainer">
+      <video id="video" autoplay></video>
+      <button id="captureButton">Tomar Foto</button>
+      <canvas id="captureCanvas"></canvas>
+    </div>    
+    <img id="capturedImage" alt="Imagen Capturada" />
+    <div id="captureOptions">
+      <button id="acceptButton">Aceptar</button>
+      <button id="cancelButton">Cancelar</button>
+    </div>
+    <div id="result"></div>
+    <div id="invoicePreview" style="display: none">
+      <h3>Datos Detectados</h3>
+      <textarea id="editableData" rows="10" cols="50"></textarea>
+      <button id="downloadCSVButton" style="display: none">
+        Descargar CSV
+      </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
